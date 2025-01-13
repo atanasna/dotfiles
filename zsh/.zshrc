@@ -1,0 +1,164 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="atanasna"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+###########################################
+# Customizations
+###########################################
+# Oh-My-Zsh
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting z)
+source $ZSH/oh-my-zsh.sh
+# Enable fzf integration
+source <(fzf --zsh)
+
+# Shell OPTIONS 
+unsetopt inc_append_history
+unsetopt share_history
+
+# Shell ALIASES
+source ~/.config/zsh/.zsh_aliases
+source ~/.config/zsh/.zsh_exports
+source ~/.config/zsh/.zsh_paths
+
+fastfetch
+# Shell KEYBINDINGS
+
+## ---
+#export EDITOR=nvim
+## ZSH plugins
+#
+#### AWS Commands
+#source ~/.config/shell/aws/env/ainfo.sh
+#source ~/.config/shell/aws/env/areset.sh
+#source ~/.config/shell/aws/env/aset.sh
+#source ~/.config/shell/aws/env/async.sh
+#source ~/.config/shell/aws/aec2.sh
+#source ~/.config/shell/aws/aecs.sh
+#source ~/.config/shell/aws/assh.sh
+#source ~/.config/shell/aws/ards.sh
+#areset
+#export AWS_SSO_ROLE=admins
+#
+#### Other
+#export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+#
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#
+#neofetch
+#
+############################################
+## PATH Exports
+############################################
+#export ANDROID_HOME=$HOME/Library/Android/sdk
+#export PATH=$PATH:/Users/atanasna/bin
+#export PATH=$PATH:$ANDROID_HOME/tools
+#export PATH=$PATH:$ANDROID_HOME/tools/bin
+#export PATH=$PATH:$ANDROID_HOME/platform-tools
+#export PATH=$PATH:$ANDROID_HOME/emulator
+#export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+#export PATH=$JAVA_HOME/bin:$PATH
+#export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+#export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+#export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+#export PATH=/Applications/Transporter.app/Contents/itms/bin:$PATH
+#export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+#
+############################################
+## SECRETS
+############################################
+#export ONESIGNAL_API_KEY=YjhkN2ExYzctNDY4My00ZmJiLWJlMGUtNjE1OTNlZDA2N2Uw
+#export BITRISE_API_KEY=mUkadmH8QGqc0lxeiK5sdi6SLdpfAPc76ov5vf4ss2Ybt1eW-mzO8HtugPg9Oi_d6C3vtYUqbs-uYxtP2hUOIg
+#export FIREBASE_API_USER=gitlab-apps@ampeco-charge.iam.gserviceaccount.com
+#export FIREBASE_API_KEY='-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLeFYJMppFV16L9yTOJJlO4q/mrPOnQREL4D+GcZyVp1bHptwB4yha4bk6AUh8dEbH3lHG2JO4snL6r85UAhW3/lvU7MxN24FGM9ZIzMxlo17dXU1Lcve3a98Hv9j86Vs7L7QFMBZdE1vjdAw8HWCi4PgTRoWqhLkDuMmIAi/+n9fusnGtQ4eT1UxcS1UAb/AIbcgkLSp1FN/YBGVi/zthrclcULqmT/nAUC5l30UFuvJFcT4WVuZDZv9sYn2y0BcltfQvpj5tb03xijsY5XrrSQIcrs3StZeUv1vJZESEcw8dGrRyFUS6IAMQYnzpSpNIVi5EaB/xCihmjF7/Rkb7AgMBAAECggEABh1YLI+WPkY5Y6hqNT25U7sRQTPqYJjee8Zh8lbgt0ifnYFgtDfQ4yZMbDdUp9TQubnvKDQjAFZwiSMWZsTnRS/CL7xsCVzy3hq5sldhPx6xP6LJq15JnnwB6Fg2G6eho74zwUIoMeTeio/WvEm/uTVcjyu74Zt6eeeoOsuiCJtUZ5SOm3rPfkHehQkRqinCzKZYng5S5lVgzwYdylbKARMqmv23RIW2oe5LW61MsUJojkJUJG4hDd1xN8VZgcINFz0FYP1hZkvyyvRHD+65UkGESa9d1Au15Angc0gqqDfhERL3uLITA4swscq+zEA5Gj7AvP/zwb7ffEtD6XYxPQKBgQDqIauXNFtH/xvpnjnKUe5azP6Z53yhnzCZo9P++wO+EI9Ylld3exsrxpU+eMHeBk5xNI50dhdRiZYavsaiD3uxzXyQ3E0n0MSe++Z9wazFGMb46/P2yY/pePgPgHnRBDITmpDx7twK0TQALseLAbWutpr7aPAp1otih6mgTeVhPQKBgQDeeYSm3VREYai2RLf1PKbDQeob7Bu16zzWsRyaFHVeRNA7lxLFL14/sPMd8ZQod/ghDWQynjLHnVmwVSWrArqlhKnfU8TsR5z1bCyb180/N1SJU5wplfpW26mZNrP/HerlrdFXc3UOSRUN/z/AL9lY+PS3y9iR3IqzhX2G5qhclwKBgB8Li+cmyBvJ1feqRVtwdbyQhgn+SeZcZ2NX99pNind/VqKWfM6ZAkdRs6Ru+rXn/CrCn0kOB5WGOuMc/NWsW+h9qNDEhW6MHiY+nJd8QN55pJiJIPZOT8jTg4D6tixi9Ajpa+LIm2DL0KtdiJQEDAU4rWA8z+ucSSstde6Npaa5AoGABr7Ccdi2DFi1p8kPlsTe/X6LHYucD3jxYEUAa/+Ay3nkolnjPM1B20Z/KIJBjrSMdlwUlKBNQ9YWeQ0r1jJ//DK4f8fnaY6GSL6d35+8XlVMH9nEG1Krw2RnkPiinnKGw63wcelTPDqlA8agZTBOM69gpA3vJAT+w5ChjKyDoEMCgYB0ijbu17vfztyoSrOPmDH2DisHiGdAmTXnfp6J3eB406AN3mdh65nHMjDuAATVi/DMG1Hl0ZF49yoOmghmrJNzdfGFnWAkz1WTot9GVL0Y/GC9Dlf+8/tA2Aw1SLlJWmwIvrFLptAD+jVE33rvq4+txQoRSDV6+q/yh0GKqVK7sQ==\n-----END PRIVATE KEY-----'

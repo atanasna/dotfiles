@@ -1,0 +1,5 @@
+theme=electron-highlighter
+keybind = cmd+u=new_split:up
+keybind = cmd+d=new_split:down
+keybind = cmd+r=new_split:right
+keybind = cmd+l=new_split:left
