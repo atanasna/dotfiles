@@ -21,6 +21,7 @@ return {
   config = function()
     local wk = require("which-key")
     local setup = {
+      preset = "modern",
       plugins = {
         marks = false,
         registers = false,
