@@ -1,11 +1,10 @@
 #---------------------
-# Plugin Dependencies
+# Install Dependencies
 #---------------------
+# Basic
 HOMEBREW_NO_AUTO_UPDATE=1 brew install wget lazygit fd fzf ripgrep
 
-#---------------------
-# LSP Dependencies
-#---------------------
+# LSPs
 HOMEBREW_NO_AUTO_UPDATE=1 brew install \
 prettier yamllint jsonlint `# yaml & json` \
 tflint `# terraform` \
@@ -16,4 +15,7 @@ npm install -g intelephense
 #---------------------
 # Link
 #---------------------
-ln -s $HOME/personal/repos/dotfiles/nvim/config $HOME/.config/nvim
+echo "Linking ..." 
+main_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ln -s $main_dir/config $HOME/.config/nvim

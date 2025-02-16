@@ -1,8 +1,16 @@
-# Install
+#---------------------
+# Install Dependencies
+#---------------------
+# Basic 
 brew install --cask ghostty
 
-# Add Fonts
+# Fonts
 brew install --cask font-terminess-ttf-nerd-font
 
+#---------------------
 # Link
-ln -s ./config $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
+#---------------------
+echo "Linking ..." 
+main_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ln -s $main_dir/config $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
