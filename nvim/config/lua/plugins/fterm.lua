@@ -4,13 +4,15 @@
 return {
   "numToStr/FTerm.nvim",
   config = function()
-    require 'FTerm'.setup({
+    local ft = require("FTerm")
+    local opts = {
       border     = 'double',
       dimensions = {
         height = 0.8,
         width = 0.8,
       },
-    })
+    }   
+    ft.setup(opts)
 
     -- Example keybindings
     vim.keymap.set('n', '<leader>t', '<CMD>lua require("FTerm").open()<CR>', {desc="Open Terminal"})

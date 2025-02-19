@@ -12,10 +12,10 @@ return {
     config = function()
       local builtin = require("telescope.builtin")
 
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Files" })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Grep Files" }) -- YOU NEED TO HAVE RIPGREP <brew install ripgrep>
-      vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = "Registers" })
-      vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = "Marks" })
+      ---vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Files" })
+      ---vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Grep Files" }) -- YOU NEED TO HAVE RIPGREP <brew install ripgrep>
+      ---vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = "Registers" })
+      ---vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = "Marks" })
 
       -- This Section allows for searching and deleting buffers
       -- The snipped is taken from this page: https://medium.com/@jogarcia/delete-buffers-on-telescope-21cc4cf61b63
@@ -59,7 +59,7 @@ return {
         }
       end
 
-      vim.keymap.set('n', '<leader>fb', buffer_searcher, { desc = "Buffers" })
+      --vim.keymap.set('n', '<leader>fb', buffer_searcher, { desc = "Buffers" })
       --require("telescope").setup {
       --  defaults = {
       --    mappings = {
@@ -84,5 +84,4 @@ return {
       require("telescope").load_extension("ui-select")
     end
   }
-
 }
