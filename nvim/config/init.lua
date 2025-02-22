@@ -15,6 +15,8 @@ vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.scrolloff = 12
+
 -- vim.cmd("nmap <silent> <c-k> :wincmd k<CR>")
 -- vim.cmd("nmap <silent> <c-j> :wincmd j<CR>")
 -- vim.cmd("nmap <silent> <c-h> :wincmd h<CR>")
@@ -22,6 +24,5 @@ vim.opt.relativenumber = true
 
 require("config.navigation")
 require("config.splits")
-require("config.test")
 require("config.lazy")
 require("lazy").setup("plugins")

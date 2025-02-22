@@ -26,6 +26,17 @@ return {
           }
         }
       },
+      sources = {
+        explorer = {
+          win = {
+            list = {
+              keys = {
+                ["<leader>fg"] = "picker_grep",
+              }
+            }
+          }
+        },
+      },
       matcher = { frecency = true },
       win = {
         input = {
