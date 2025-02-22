@@ -1,24 +1,36 @@
 return {
   "rmagatti/auto-session",
   config = function()
-    require("auto-session").setup {
+    local as = require("auto-session")
+    local opts = {
       suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      auto_save = true,
+      auto_create = false,
       cwd_change_handling = false,
       session_lens = {
-        buftypes_to_ignore = {},
-        load_on_setup = true,
-        theme_conf = { border = true },
-        previewer = false,
+        -- buftypes_to_ignore = {},
+        -- load_on_setup = true,
+        theme_conf = {
+          border = true,
+          preview = false,
+        },
+        -- previewer = false,
         mappings = {
-          -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
           delete_session = { "i", "<C-d>" },
         },
       },
     }
 
-    vim.keymap.set("n", "<Leader>fs", require("auto-session.session-lens").search_session, {
-      noremap = true,
-      desc = "Sessions"
-    })
+    as.setup(opts)
+
+    vim.keymap.set("n", "<Leader>as", function()
+      Snacks.input({
+        prompt = 'Session Name',
+      }, function(value)
+        vim.cmd("SessionSave " .. value)
+      end)
+    end, { desc = "Session" })
+
+    vim.keymap.set("n", "<Leader>fs", ":SessionSearch<CR>", { desc = "Sessions"})
   end,
 }
