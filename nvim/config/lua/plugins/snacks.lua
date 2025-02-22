@@ -32,12 +32,22 @@ return {
           keys = {
             ["<c-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<c-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<c-n>"] = {
+              function()
+                Snacks.notify("test")
+                local items = picker:selected({ fallback = true })
+                for _, item in items do
+                  Snacks.notify(item)
+                end
+              end,
+              mode = { "i", "n" }
+            }
           }
         }
       }
     },
-    --notifier = { enabled = true },
-    quickfile = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = false },
     terminal = { enabled = false },
     dim = { enabled = true },
     scope = { enabled = true },
@@ -53,13 +63,8 @@ return {
         Snacks.explorer(
           {
             layout = "select",
-            win = {
-              input = {
-                keys = {
-                  ["<cr>"] = {"close", mode = {"i","n"}},
-                }
-              }
-            }
+            auto_close = true,
+            hidden = true,
           })
       end,
       desc = "Explorer"
@@ -77,15 +82,37 @@ return {
               }
             }
           }
-
         })
       end,
       desc = "Buffers"
     },
-    { "<leader>fr", function() Snacks.picker.registers() end, desc = "Registers" },
-    { "<leader>ff", function() Snacks.picker.files() end,     desc = "Files" },
-    { "<leader>fg", function() Snacks.picker.grep() end,      desc = "Grep" },
-    { "<leader>fm", function() Snacks.picker.marks() end,     desc = "Marks" },
+    { "<leader>fr", function() Snacks.picker.registers() end,              desc = "Registers" },
+    { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Files" },
+    { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end,  desc = "Grep" },
+    {
+      "<leader>fe",
+      function()
+        -- Get a list of all directories in the workspace
+        local workspace_path = vim.fn.getcwd()
+        local directories = vim.fn.systemlist("find " .. workspace_path .. " -type d")
+
+        -- Present the directories to the user for selection
+        vim.ui.select(directories, {
+          prompt = "Select a directory:",
+          format_item = function(item)
+            return item
+          end,
+        }, function(choice)
+          if choice then
+            Snacks.picker.grep({ dirs = { choice } })
+          else
+            print("No directory selected")
+          end
+        end)
+      end,
+      desc = "Grep Experimental"
+    },
+    { "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
     -- Code
     {
       "<leader>ch",

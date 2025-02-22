@@ -21,5 +21,7 @@ vim.opt.relativenumber = true
 -- vim.cmd("nmap <silent> <c-l> :wincmd l<CR>")
 
 require("config.navigation")
+require("config.splits")
+require("config.test")
 require("config.lazy")
 require("lazy").setup("plugins")
