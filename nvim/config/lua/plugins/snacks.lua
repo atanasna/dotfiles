@@ -98,31 +98,9 @@ return {
       desc = "Buffers"
     },
     { "<leader>fr", function() Snacks.picker.registers() end,              desc = "Registers" },
-    { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Files" },
+    { "<leader>ff", function() Snacks.picker.files({ matcher = { frecency = true}, hidden = true }) end, desc = "Files" },
     { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end,  desc = "Grep" },
-    {
-      "<leader>fe",
-      function()
-        -- Get a list of all directories in the workspace
-        local workspace_path = vim.fn.getcwd()
-        local directories = vim.fn.systemlist("find " .. workspace_path .. " -type d")
-
-        -- Present the directories to the user for selection
-        vim.ui.select(directories, {
-          prompt = "Select a directory:",
-          format_item = function(item)
-            return item
-          end,
-        }, function(choice)
-          if choice then
-            Snacks.picker.grep({ dirs = { choice } })
-          else
-            print("No directory selected")
-          end
-        end)
-      end,
-      desc = "Grep Experimental"
-    },
+    -- { "<leader>fh", function() Snacks.picker.select({ items = require("harpoon"):list() }) end,  desc = "Harpoon" },
     { "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
     -- Code
     {
