@@ -20,11 +20,13 @@ return {
       end
       return file_paths
     end
-    vim.keymap.set("n", "<leader>ah", function() harpoon:list():add() end, {desc ="Harpoon"})
+    vim.keymap.set("n", "<leader>uh", function() harpoon:list():add() end, {desc ="Add Harpoon"})
     -- vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
     vim.keymap.set("n", "<leader>fh", function()
       Snacks.picker({
         finder = generate_harpoon_picker,
+        layout = "select",
+        title = "Hapoons",
         win = {
           input = {
             keys = {

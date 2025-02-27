@@ -31,7 +31,7 @@ return {
     wk.setup(setup)
     wk.add({
       { "<leader>f", group = "Find", icon = "" },
-      { "<leader>a", group = "Add", icon = "" },
+      { "<leader>u", group = "Utils", icon = "" },
       { "<leader>c", group = "Code", icon = "󰅱" },
       { "<leader>s", group = "Split", icon = "󰨑" },
     })

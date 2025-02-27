@@ -23,13 +23,13 @@ return {
 
     as.setup(opts)
 
-    vim.keymap.set("n", "<Leader>as", function()
+    vim.keymap.set("n", "<Leader>us", function()
       Snacks.input({
         prompt = 'Session Name',
       }, function(value)
         vim.cmd("SessionSave " .. value)
       end)
-    end, { desc = "Session" })
+    end, { desc = "Add Session" })
 
     vim.keymap.set("n", "<Leader>fs", ":SessionSearch<CR>", { desc = "Sessions"})
   end,

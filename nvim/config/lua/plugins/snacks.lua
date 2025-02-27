@@ -22,7 +22,8 @@ return {
       layouts = {
         select = {
           layout = {
-            height = 0.9,
+            height = 0.8,
+            width = 0.4
           }
         }
       },
@@ -97,11 +98,26 @@ return {
       end,
       desc = "Buffers"
     },
-    { "<leader>fr", function() Snacks.picker.registers() end,              desc = "Registers" },
-    { "<leader>ff", function() Snacks.picker.files({ matcher = { frecency = true}, hidden = true }) end, desc = "Files" },
-    { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end,  desc = "Grep" },
-    -- { "<leader>fh", function() Snacks.picker.select({ items = require("harpoon"):list() }) end,  desc = "Harpoon" },
-    { "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
+    { "<leader>fr", function() Snacks.picker.registers() end,             desc = "Registers" },
+    { "<leader>ff", function() Snacks.picker.smart({ hidden = true }) end, desc = "Files" },
+    { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
+    { "<leader>fm", function() Snacks.picker.marks() end,                 desc = "Marks" },
+    { "<leader>fw",
+      function()
+        Snacks.picker.lines({
+          title = "Words",
+          matcher = {
+            fuzzy = false,
+          },
+          layout = {
+            preset = "sidebar",
+            layout = {
+              position = "right",
+              width = 0.35,
+            }
+          },
+        })
+      end, desc = "Words" },
     -- Code
     {
       "<leader>ch",
