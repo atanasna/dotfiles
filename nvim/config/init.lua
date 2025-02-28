@@ -22,7 +22,6 @@ vim.opt.scrolloff = 12
 -- vim.cmd("nmap <silent> <c-h> :wincmd h<CR>")
 -- vim.cmd("nmap <silent> <c-l> :wincmd l<CR>")
 
-require("config.navigation")
-require("config.splits")
+require("config.keymaps")
 require("config.lazy")
 require("lazy").setup("plugins")

@@ -13,10 +13,19 @@ return {
         theme_conf = {
           border = true,
           preview = false,
+          layout_config = {
+            preset = "select",
+            layout = {
+              
+              width = 0.35,
+            }
+            -- width = 0.4,
+            -- height = 0.8,
+          }
         },
         -- previewer = false,
         mappings = {
-          delete_session = { "i", "<C-d>" },
+          delete_eession = { "i", "<C-d>" },
         },
       },
     }
@@ -31,6 +40,6 @@ return {
       end)
     end, { desc = "Add Session" })
 
-    vim.keymap.set("n", "<Leader>fs", ":SessionSearch<CR>", { desc = "Sessions"})
+    vim.keymap.set("n", "<Leader>fs", ":SessionSearch<CR>", { desc = "Sessions" })
   end,
 }

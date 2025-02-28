@@ -20,7 +20,7 @@ return {
   },
   config = function()
     local wk = require("which-key")
-    local setup = {
+    local opts = {
       preset = "modern",
       plugins = {
         marks = false,
@@ -28,7 +28,7 @@ return {
       },
     }
 
-    wk.setup(setup)
+    wk.setup(opts)
     wk.add({
       { "<leader>f", group = "Find", icon = "" },
       { "<leader>u", group = "Utils", icon = "" },
