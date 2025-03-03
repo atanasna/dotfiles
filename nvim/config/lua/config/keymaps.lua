@@ -32,7 +32,6 @@ vim.keymap.set('n', '<leader>sr', ":SplitRight<CR>", {desc = "Split Right" })
 vim.keymap.set('n', '<leader>su', ":horizontal split<CR>", {desc = "Split Up" })
 vim.keymap.set('n', '<leader>sd', ":SplitDown<CR>", {desc = "Split Down" })
 
-
 ---------------------------
 -- Misc 
 ---------------------------

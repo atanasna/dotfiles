@@ -23,9 +23,9 @@ return {
         select = {
           layout = {
             height = 0.8,
-            width = 0.4
-          }
-        }
+            width = 0.4,
+          },
+        },
       },
       sources = {
         explorer = {
@@ -33,17 +33,17 @@ return {
             list = {
               keys = {
                 ["<leader>fg"] = "picker_grep",
-              }
-            }
-          }
+              },
+            },
+          },
         },
       },
       matcher = { frecency = true },
       win = {
         input = {
           keys = {
-            ["<c-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
-            ["<c-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<S-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<S-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<c-n>"] = {
               function()
                 Snacks.notify("test")
@@ -52,11 +52,11 @@ return {
                   Snacks.notify(item)
                 end
               end,
-              mode = { "i", "n" }
-            }
-          }
-        }
-      }
+              mode = { "i", "n" },
+            },
+          },
+        },
+      },
     },
     notifier = { enabled = true },
     quickfile = { enabled = false },
@@ -72,14 +72,15 @@ return {
     {
       "<leader>e",
       function()
-        Snacks.explorer(
-          {
-            layout = "select",
-            auto_close = true,
-            hidden = true,
-          })
+        Snacks.explorer({
+          layout = "select",
+          auto_close = true,
+          ignored = true,
+          show_empty = true,
+          hidden = true,
+        })
       end,
-      desc = "Explorer"
+      desc = "Explorer",
     },
     -- Find
     {
@@ -91,18 +92,64 @@ return {
             input = {
               keys = {
                 ["<c-d>"] = { "bufdelete", mode = { "i", "n" } },
-              }
-            }
-          }
+              },
+            },
+          },
         })
       end,
-      desc = "Buffers"
+      desc = "Buffers",
     },
-    { "<leader>fr", function() Snacks.picker.registers() end,             desc = "Registers" },
-    { "<leader>ff", function() Snacks.picker.smart({ hidden = true }) end, desc = "Files" },
-    { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
-    { "<leader>fm", function() Snacks.picker.marks() end,                 desc = "Marks" },
-    { "<leader>fw",
+    -- Find
+    {
+      "<leader>fr",
+      function()
+        Snacks.picker.registers()
+      end,
+      desc = "Registers",
+    },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.smart({ hidden = true })
+      end,
+      desc = "Files",
+    },
+    {
+      "<leader>fC",
+      function()
+        Snacks.picker.command_history({
+          title = "Command History",
+          layout = { preset = "select" },
+        })
+      end,
+      desc = "Commands(History)",
+    },
+    {
+      "<leader>fc",
+      function()
+        Snacks.picker.commands({
+          title = "Commands",
+          layout = { preset = "select" },
+        })
+      end,
+      desc = "Commands",
+    },
+    {
+      "<leader>fg",
+      function()
+        Snacks.picker.grep({ hidden = true })
+      end,
+      desc = "Grep",
+    },
+    {
+      "<leader>fn",
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = "Notifications",
+    },
+    {
+      "<leader>fw",
       function()
         Snacks.picker.lines({
           title = "Words",
@@ -114,10 +161,29 @@ return {
             layout = {
               position = "right",
               width = 0.35,
-            }
+            },
           },
         })
-      end, desc = "Words" },
+      end,
+      desc = "Words",
+    },
+
+    -- Git
+    {
+      "<leader>gs",
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = "Status",
+    },
+    {
+      "<leader>gb",
+      function()
+        Snacks.picker.git_branches()
+      end,
+      desc = "Branches",
+    },
+
     -- Code
     {
       "<leader>ch",
@@ -128,9 +194,9 @@ return {
           Snacks.dim.enable()
         end
       end,
-      desc = "Toggle Dim"
+      desc = "Toggle Dim",
     },
     --{ "<leader>fp", function() Snacks.picker.projects() end,               desc = "Projects" },
     --{ "<leader>fr", function() Snacks.picker.recent() end,                 desc = "Recent" },
-  }
+  },
 }

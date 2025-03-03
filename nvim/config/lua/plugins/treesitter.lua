@@ -57,13 +57,18 @@ return {
               ["ai"] = "@conditional.outer",
               ["ii"] = "@conditional.inner",
               -- You can also use captures from other query groups like `locals.scm`
-              ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+              ["as"] = { query = "@local.scope", query_group = 'locals', desc = "Select language scope" },
             },
           }
         }
       }
 
       tso.setup(opts)
+
+      vim.keymap.set('o', 'iq', "i'", { desc = "inside quotes(')" })
+      vim.keymap.set('o', 'iQ', "i\"", { desc = "inside quotes(\")" })
+      vim.keymap.set('o', 'ib', "i(", { desc = "inside brackets(())" })
+      vim.keymap.set('o', 'iB', "i[", { desc = "inside quotes([])" })
     end
   }
 }
