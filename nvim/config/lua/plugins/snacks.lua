@@ -42,9 +42,10 @@ return {
       win = {
         input = {
           keys = {
-            ["<S-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
-            ["<S-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<D-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<D-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<c-n>"] = {
+              -- THIS IS A TEST TO TRIGGER A NOTIFICATION ON KEYCOMBO
               function()
                 Snacks.notify("test")
                 local items = picker:selected({ fallback = true })
@@ -82,7 +83,7 @@ return {
       end,
       desc = "Explorer",
     },
-    -- Find
+    -- Find BUFFERS
     {
       "<leader>fb",
       function()
@@ -91,7 +92,7 @@ return {
           win = {
             input = {
               keys = {
-                ["<c-d>"] = { "bufdelete", mode = { "i", "n" } },
+                ["<C-x>"] = { "bufdelete", mode = { "i", "n" } },
               },
             },
           },
@@ -99,7 +100,7 @@ return {
       end,
       desc = "Buffers",
     },
-    -- Find
+    -- Find REGISTERS
     {
       "<leader>fr",
       function()
@@ -110,12 +111,14 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.smart({ hidden = true })
+        Snacks.picker.smart({
+          hidden = true,
+        })
       end,
       desc = "Files",
     },
     {
-      "<leader>fC",
+      "<leader>fc",
       function()
         Snacks.picker.command_history({
           title = "Command History",
@@ -125,7 +128,7 @@ return {
       desc = "Commands(History)",
     },
     {
-      "<leader>fc",
+      "<leader>fC",
       function()
         Snacks.picker.commands({
           title = "Commands",
@@ -137,7 +140,9 @@ return {
     {
       "<leader>fg",
       function()
-        Snacks.picker.grep({ hidden = true })
+        Snacks.picker.grep({
+          hidden = true,
+        })
       end,
       desc = "Grep",
     },
