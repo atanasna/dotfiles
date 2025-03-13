@@ -8,7 +8,19 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = {
+      enabled = true,
+      preset = {
+        header = [[
+    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
+    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
+    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  
+    ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  
+    ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+     ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+      ]],
+      },
+    },
     explorer = {
       prompt = "⏵ ",
       enabled = true,
@@ -88,17 +100,26 @@ return {
       "<leader>fb",
       function()
         Snacks.picker.buffers({
-          layout = { preset = "default" },
-          win = {
-            input = {
-              keys = {
-                ["<C-x>"] = { "bufdelete", mode = { "i", "n" } },
-              },
-            },
+          layout = {
+            preset = "default",
+          },
+          matcher = {
+            frecency = false,
+          },
+          sort = {
+            fields = { "#text", "idx" },
           },
         })
       end,
       desc = "Buffers",
+    },
+    -- FIND JUMPS
+    {
+      "<leader>fj",
+      function()
+        Snacks.picker.jumps()
+      end,
+      desc = "Jumps",
     },
     -- Find REGISTERS
     {
@@ -111,8 +132,9 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.smart({
+        Snacks.picker.files({
           hidden = true,
+          ignored = true,
         })
       end,
       desc = "Files",
@@ -180,6 +202,13 @@ return {
         Snacks.picker.git_status()
       end,
       desc = "Status",
+    },
+    {
+      "<leader>gl",
+      function()
+        Snacks.picker.git_log()
+      end,
+      desc = "Log",
     },
     {
       "<leader>gb",
