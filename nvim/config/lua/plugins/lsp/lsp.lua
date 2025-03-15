@@ -11,6 +11,8 @@ return {
       intelephense = {},
       jsonls = {},
       yamlls = {},
+      sqlls = {},
+      terraformls = {},
       -- pyright = {},
       ruff = {},
     }

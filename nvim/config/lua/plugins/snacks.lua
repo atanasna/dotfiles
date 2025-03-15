@@ -32,6 +32,38 @@ return {
       prompt = "⏵ ",
       enabled = true,
       layouts = {
+        default_A = {
+          layout = {
+            box = "horizontal",
+            width = 0.8,
+            min_width = 120,
+            height = 0.8,
+            {
+              box = "vertical",
+              border = "rounded",
+              title = "{title} {live} {flags}",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+            },
+            { win = "preview", title = "{preview}", border = "rounded", width = 0.7 },
+          },
+        },
+        vertical_A = {
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.8,
+            min_height = 30,
+            box = "vertical",
+            border = "rounded",
+            title = "{title} {live} {flags}",
+            title_pos = "center",
+            { win = "input", height = 1, border = "bottom" },
+            { win = "list", border = "none" },
+            { win = "preview", title = "{preview}", height = 0.6, border = "top" },
+          },
+        },
         select = {
           layout = {
             height = 0.8,
@@ -100,15 +132,16 @@ return {
       "<leader>fb",
       function()
         Snacks.picker.buffers({
-          layout = {
-            preset = "default",
-          },
+          -- layout = {
+          --   preset = "default_A",
+          -- },
+          sort_lastused = false,
           matcher = {
             frecency = false,
           },
-          sort = {
-            fields = { "#text", "idx" },
-          },
+          -- sort = {
+          --   fields = { "#text", "idx" },
+          -- },
         })
       end,
       desc = "Buffers",
@@ -117,7 +150,9 @@ return {
     {
       "<leader>fj",
       function()
-        Snacks.picker.jumps()
+        Snacks.picker.jumps({
+          layout = { preset = "vertical_A" },
+        })
       end,
       desc = "Jumps",
     },
@@ -125,14 +160,30 @@ return {
     {
       "<leader>fr",
       function()
-        Snacks.picker.registers()
+        Snacks.picker.registers({
+          layout = { preset = "vertical" },
+        })
       end,
       desc = "Registers",
+    },
+    {
+      "<leader>fm",
+      function()
+        Snacks.picker.marks({
+          layout = { preset = "vertical_A" },
+          hidden = true,
+          ignored = true,
+        })
+      end,
+      desc = "Marks",
     },
     {
       "<leader>ff",
       function()
         Snacks.picker.files({
+          layout = {
+            preset = "default_A",
+          },
           hidden = true,
           ignored = true,
         })
@@ -171,7 +222,9 @@ return {
     {
       "<leader>fn",
       function()
-        Snacks.picker.notifications()
+        Snacks.picker.notifications({
+          layout = { preset = "vertical" },
+        })
       end,
       desc = "Notifications",
     },

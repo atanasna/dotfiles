@@ -15,6 +15,7 @@ return {
         html = { "prettier" },
         json = { "jq" },
         yaml = { "yamlfmt" },
+        sql = { "sqlfmt" },
         markdown = { "prettier" },
         graphql = { "prettier" },
         lua = { "stylua" },

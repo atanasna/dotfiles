@@ -33,6 +33,7 @@ return {
           -- "ruff", -- python linter/formatter
           "jq", -- json formatter
           "yamlfmt", -- yaml formatter
+          "sqlfmt", -- sql formatter
           -- Linters
           -- "pylint", -- Python
           "eslint_d", -- JS
@@ -55,7 +56,9 @@ return {
           "intelephense", -- Php
           "jsonls", -- JSON
           "yamlls", -- YAML
+          "sqlls", -- SQL
           -- "pyright", -- Python
+          "terraformls", -- Terraform
           "ruff", -- Python
           "zls", -- Zig
           "bashls", -- Bash

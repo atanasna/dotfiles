@@ -15,28 +15,30 @@ return {
       for _, item in ipairs(harpoon:list().items) do
         table.insert(file_paths, {
           text = item.value,
-          file = item.value
+          file = item.value,
         })
       end
       return file_paths
     end
-    vim.keymap.set("n", "<leader>uh", function() harpoon:list():add() end, {desc ="Add Harpoon"})
+    vim.keymap.set("n", "<leader>uh", function()
+      harpoon:list():add()
+    end, { desc = "Add Harpoon" })
     -- vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
     vim.keymap.set("n", "<leader>fh", function()
       Snacks.picker({
         finder = generate_harpoon_picker,
-        layout = "select",
+        layout = "default_A",
         title = "Hapoons",
         win = {
           input = {
             keys = {
-              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } }
-            }
+              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
+            },
           },
           list = {
             keys = {
-              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } }
-            }
+              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
+            },
           },
         },
         actions = {
@@ -44,11 +46,11 @@ return {
             local to_remove = item or picker:selected()
             table.remove(harpoon:list().items, to_remove.idx)
             picker:find({
-              refresh = true   -- refresh picker after removing values
+              refresh = true, -- refresh picker after removing values
             })
-          end
+          end,
         },
       })
-    end, {desc="Harpoons"})
+    end, { desc = "Harpoons" })
   end,
 }

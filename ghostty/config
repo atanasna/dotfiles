@@ -5,6 +5,7 @@ foreground = ffffff
 background-opacity = 1
 window-theme = ghostty
 font-family = "Terminess Nerd Font"
+macos-option-as-alt = true
 
 # Bindings
 keybind = cmd+u=new_split:up
