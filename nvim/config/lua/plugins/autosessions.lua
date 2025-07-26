@@ -25,14 +25,14 @@ return {
         },
         -- previewer = false,
         mappings = {
-          delete_eession = { "i", "<C-d>" },
+          delete_eession = { "i", "<C-x>" },
         },
       },
     }
 
     as.setup(opts)
 
-    vim.keymap.set("n", "<Leader>us", function()
+    vim.keymap.set("n", "<Leader>as", function()
       Snacks.input({
         prompt = 'Session Name',
       }, function(value)

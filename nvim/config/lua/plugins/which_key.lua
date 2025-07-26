@@ -1,4 +1,4 @@
-----------------
+---------------
 --- WhichKey ---
 ----------------
 return {
@@ -30,10 +30,11 @@ return {
 
     wk.setup(opts)
     wk.add({
+      { "<leader>a", group = "Add", icon = "" },
       { "<leader>f", group = "Find", icon = "" },
       { "<leader>u", group = "Utils", icon = "" },
       { "<leader>c", group = "Code", icon = "󰅱" },
-      { "<leader>s", group = "Split", icon = "󰨑" },
+      -- { "<leader>s", group = "Split", icon = "󰨑" },
       { "<leader>g", group = "Git"},
       { "<leader>gd", group = "Diff"},
     })

@@ -31,6 +31,12 @@ return {
     picker = {
       prompt = "⏵ ",
       enabled = true,
+      -- previewers = {
+      --   diff = {
+      --     builtin = true, -- use Neovim for previewing diffs (true) or use an external tool (false)
+      --     cmd = { "deltqwida -s -n --dark --paging=never" }, -- example to show a diff with delta
+      --   },
+      -- },
       layouts = {
         default_A = {
           layout = {
@@ -77,6 +83,9 @@ return {
             list = {
               keys = {
                 ["<leader>fg"] = "picker_grep",
+                ["<leader>ff"] = "picker_files",
+                ["<d-j>"] = "list_scroll_down",
+                ["<d-k>"] = "list_scroll_up",
               },
             },
           },
@@ -146,6 +155,19 @@ return {
       end,
       desc = "Buffers",
     },
+    -- Find Undo
+    {
+      "<leader>fu",
+      function()
+        Snacks.picker.undo({
+          layout = {
+            preset = "default_A",
+          },
+          -- preview = "diff",
+        })
+      end,
+      desc = "Undo",
+    },
     -- FIND JUMPS
     {
       "<leader>fj",
@@ -191,6 +213,62 @@ return {
       desc = "Files",
     },
     {
+      "<leader>fq",
+      function()
+        local qf = require("utils.quickfix")
+
+        local function get_unique(list)
+            local seen = {}
+            local result = {}
+
+            for _, value in ipairs(list) do
+                if not seen[value] then
+                    seen[value] = true
+                    table.insert(result, value)
+                end
+            end
+
+            return result
+        end
+
+        local function get_relative_paths(paths)
+          local cwd = vim.fn.getcwd()
+          local rpaths = {}
+
+          for _, path in ipairs(paths) do
+            local rel = path:gsub("^" .. cwd .. "/", "")
+            table.insert(rpaths, rel)
+          end
+
+          return rpaths
+        end
+
+        local original_notify = vim.notify
+        vim.notify = function() end  -- override with no-op
+
+        local files = get_unique(qf.get_files())
+
+        vim.notify = original_notify -- restore original function
+
+        local rfiles = get_relative_paths(files)
+        -- for file in qf.get_files() do
+        --   Snacks.notify(file)
+        -- end
+        Snacks.picker.grep({
+          prompt = "⏵ ",
+          glob = rfiles,
+          -- glob = { 
+          --   ".gitignore",
+          --   "/config/lua/plugins/snacks.lua",
+          --   "config/lua/plugins/surround.lua",
+          --   "config/lua/plugins/blink.lua"
+          -- },
+          regex = true, -- enable regex searching
+        })
+      end,
+      desc = "Quickfix List",
+    },
+    {
       "<leader>fc",
       function()
         Snacks.picker.command_history({
@@ -215,6 +293,15 @@ return {
       function()
         Snacks.picker.grep({
           hidden = true,
+          args = {
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--pcre2", -- Add this line
+          },
         })
       end,
       desc = "Grep",
@@ -246,6 +333,25 @@ return {
         })
       end,
       desc = "Words",
+    },
+    {
+      "<leader>fo",
+      function()
+        Snacks.picker.lsp_symbols({
+          title = "Code Objects",
+          matcher = {
+            fuzzy = false,
+          },
+          layout = {
+            preset = "sidebar",
+            layout = {
+              position = "right",
+              width = 0.35,
+            },
+          },
+        })
+      end,
+      desc = "Objects",
     },
 
     -- Git

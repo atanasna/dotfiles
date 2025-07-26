@@ -20,7 +20,7 @@ return {
       end
       return file_paths
     end
-    vim.keymap.set("n", "<leader>uh", function()
+    vim.keymap.set("n", "<leader>ah", function()
       harpoon:list():add()
     end, { desc = "Add Harpoon" })
     -- vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)

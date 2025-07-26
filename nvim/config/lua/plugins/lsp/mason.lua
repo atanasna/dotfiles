@@ -28,6 +28,7 @@ return {
           -- Formatters
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
+          "hclfmt", -- for terraform
           -- "isort", -- python formatter
           -- "black", -- python formatter
           -- "ruff", -- python linter/formatter
@@ -41,7 +42,8 @@ return {
           "phpstan", -- PHP
           "jsonlint", -- JSON
           "yamllint", -- Yaml
-          "rubocop", -- Ruby
+          "rubyfmt", -- Ruby
+          -- "rubocop", -- Ruby
         },
       })
     end,
