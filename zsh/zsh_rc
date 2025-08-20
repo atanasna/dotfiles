@@ -111,8 +111,6 @@ unsetopt share_history
 
 # Shell ALIASES
 source ~/.config/zsh/.zsh_aliases
-source ~/.config/zsh/.zsh_exports
-source ~/.config/zsh/.zsh_paths
 
 fastfetch
 # Shell KEYBINDINGS
