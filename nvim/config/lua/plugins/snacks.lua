@@ -4,9 +4,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
@@ -31,12 +28,6 @@ return {
     picker = {
       prompt = "⏵ ",
       enabled = true,
-      -- previewers = {
-      --   diff = {
-      --     builtin = true, -- use Neovim for previewing diffs (true) or use an external tool (false)
-      --     cmd = { "deltqwida -s -n --dark --paging=never" }, -- example to show a diff with delta
-      --   },
-      -- },
       layouts = {
         default_A = {
           layout = {
@@ -51,15 +42,15 @@ return {
               { win = "input", height = 1, border = "bottom" },
               { win = "list", border = "none" },
             },
-            { win = "preview", title = "{preview}", border = "rounded", width = 0.7 },
+            { win = "preview", title = "{preview}", border = "rounded", width = 0.6 },
           },
         },
         vertical_A = {
           layout = {
             backdrop = false,
-            width = 0.5,
+            width = 0.8,
             min_width = 80,
-            height = 0.8,
+            height = 0.9,
             min_height = 30,
             box = "vertical",
             border = "rounded",
@@ -67,7 +58,7 @@ return {
             title_pos = "center",
             { win = "input", height = 1, border = "bottom" },
             { win = "list", border = "none" },
-            { win = "preview", title = "{preview}", height = 0.6, border = "top" },
+            { win = "preview", title = "{preview}", height = 0.72, border = "top" },
           },
         },
         select = {
@@ -128,6 +119,13 @@ return {
       function()
         Snacks.explorer({
           layout = "select",
+          -- layout = {
+          --   preset = "sidebar",
+          --   layout = {
+          --     position = "left",
+          --     width = 0.2,
+          --   },
+          -- },
           auto_close = true,
           ignored = true,
           show_empty = true,
@@ -141,16 +139,10 @@ return {
       "<leader>fb",
       function()
         Snacks.picker.buffers({
-          -- layout = {
-          --   preset = "default_A",
-          -- },
           sort_lastused = false,
           matcher = {
             frecency = false,
           },
-          -- sort = {
-          --   fields = { "#text", "idx" },
-          -- },
         })
       end,
       desc = "Buffers",
@@ -163,7 +155,6 @@ return {
           layout = {
             preset = "default_A",
           },
-          -- preview = "diff",
         })
       end,
       desc = "Undo",

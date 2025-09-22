@@ -4,3 +4,4 @@
 alias ll="eza -alah"
 alias cat="bat --style=plain"
 alias vim="nvim"
+alias k="kubectl"

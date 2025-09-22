@@ -8,22 +8,9 @@ return {
       auto_create = false,
       cwd_change_handling = false,
       session_lens = {
-        -- buftypes_to_ignore = {},
-        -- load_on_setup = true,
-        theme_conf = {
-          border = true,
-          preview = false,
-          layout_config = {
-            preset = "select",
-            layout = {
-              
-              width = 0.35,
-            }
-            -- width = 0.4,
-            -- height = 0.8,
-          }
+        picker_opts = {
+          preset = "select"
         },
-        -- previewer = false,
         mappings = {
           delete_eession = { "i", "<C-x>" },
         },

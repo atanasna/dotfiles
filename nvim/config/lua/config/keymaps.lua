@@ -55,3 +55,4 @@ vim.keymap.set("n", "<D-s>j", ":SplitDown<CR>", { desc = "Split Down" })
 ---------------------------
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save" })
+vim.keymap.set("n", "<leader>r", ":edit!<CR>", { desc = "Reload" })
