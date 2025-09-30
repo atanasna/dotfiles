@@ -17,8 +17,14 @@
             "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
         },
         {
+            "type": "command",
+            "text": "hostname",
+            "key": "  Hostname",
+            "keyColor": "green"
+        },
+        {
             "type": "host",
-            "key": "  Host",
+            "key": "  Model",
             "keyColor": "green"
         },
         {

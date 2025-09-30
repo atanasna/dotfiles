@@ -110,7 +110,7 @@ unsetopt inc_append_history
 unsetopt share_history
 
 # Shell ALIASES
-source ~/.config/zsh/.zsh_aliases
+source ~/.config/zsh/aliases
 
 fastfetch
 # Shell KEYBINDINGS
