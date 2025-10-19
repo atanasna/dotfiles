@@ -6,21 +6,21 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
+        -- javascript = { "prettier" },
+        -- typescript = { "prettier" },
+        -- javascriptreact = { "prettier" },
+        -- typescriptreact = { "prettier" },
+        -- svelte = { "prettier" },
+        -- css = { "prettier" },
+        -- html = { "prettier" },
         json = { "jq" },
         yaml = { "yamlfmt" },
         sql = { "sqlfmt" },
-        markdown = { "prettier" },
-        graphql = { "prettier" },
+        -- markdown = { "prettier" },
+        -- graphql = { "prettier" },
         lua = { "stylua" },
-        -- python = { "ruff" },
-        ruby = { "rubyfmt" },
+        python = { "ruff_format" },
+        ruby = { "rubocop" },
         terraform = { "hclfmt" },
       },
       -- format_on_save = {
@@ -32,7 +32,7 @@ return {
 
     vim.keymap.set({ "n", "v" }, "<leader>cf", function()
       conform.format({
-        lsp_fallback = true,
+        lsp_fallback = false,
         async = false,
         timeout_ms = 1000,
       })

@@ -9,12 +9,15 @@ return {
       enabled = true,
       preset = {
         header = [[
-    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
-    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
-    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  
-    ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  
-    ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
-     ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+   ░███                             ░██                                                          ░██   ░██                        ░██░██ 
+  ░██░██                            ░██                                                                ░██                           ░██ 
+ ░██  ░██  ░██    ░██  ░███████  ░████████  ░███████         ░█████████████   ░███████  ░██░████ ░██░████████ ░██    ░██ ░██░████ ░██░██ 
+░█████████ ░██    ░██ ░██    ░██    ░██    ░██    ░██        ░██   ░██   ░██ ░██    ░██ ░███     ░██   ░██    ░██    ░██ ░███     ░██░██ 
+░██    ░██  ░██  ░██  ░█████████    ░██    ░█████████        ░██   ░██   ░██ ░██    ░██ ░██      ░██   ░██    ░██    ░██ ░██      ░██░██ 
+░██    ░██   ░██░██   ░██           ░██    ░██               ░██   ░██   ░██ ░██    ░██ ░██      ░██   ░██    ░██   ░███ ░██      ░██    
+░██    ░██    ░███     ░███████      ░████  ░███████  ░██    ░██   ░██   ░██  ░███████  ░██      ░██    ░████  ░█████░██ ░██      ░██░██ 
+                                                       ░█                                                                                
+                                                      ░█                                                                                 
       ]],
       },
     },
@@ -88,17 +91,17 @@ return {
           keys = {
             ["<D-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<D-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
-            ["<c-n>"] = {
-              -- THIS IS A TEST TO TRIGGER A NOTIFICATION ON KEYCOMBO
-              function()
-                Snacks.notify("test")
-                local items = picker:selected({ fallback = true })
-                for _, item in items do
-                  Snacks.notify(item)
-                end
-              end,
-              mode = { "i", "n" },
-            },
+            -- ["<c-n>"] = {
+            --   -- THIS IS A TEST TO TRIGGER A NOTIFICATION ON KEYCOMBO
+            --   function()
+            --     Snacks.notify("test")
+            --     local items = picker:selected({ fallback = true })
+            --     for _, item in items do
+            --       Snacks.notify(item)
+            --     end
+            --   end,
+            --   mode = { "i", "n" },
+            -- },
           },
         },
       },
@@ -234,8 +237,8 @@ return {
           return rpaths
         end
 
-        local original_notify = vim.notify
-        vim.notify = function() end  -- override with no-op
+        -- local original_notify = vim.notify
+        -- vim.notify = function() end  -- override with no-op
 
         local files = get_unique(qf.get_files())
 
@@ -260,7 +263,7 @@ return {
       desc = "Quickfix List",
     },
     {
-      "<leader>fc",
+      "<leader>fC",
       function()
         Snacks.picker.command_history({
           title = "Command History",
@@ -270,11 +273,14 @@ return {
       desc = "Commands(History)",
     },
     {
-      "<leader>fC",
+      "<leader>fc",
       function()
         Snacks.picker.commands({
           title = "Commands",
           layout = { preset = "select" },
+          actions = {
+            default = "execute"
+          }
         })
       end,
       desc = "Commands",
@@ -346,13 +352,13 @@ return {
     },
 
     -- Git
-    {
-      "<leader>gs",
-      function()
-        Snacks.picker.git_status()
-      end,
-      desc = "Status",
-    },
+    -- {
+    --   "<leader>gs",
+    --   function()
+    --     Snacks.picker.git_status()
+    --   end,
+    --   desc = "Status",
+    -- },
     {
       "<leader>gl",
       function()

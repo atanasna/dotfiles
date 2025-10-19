@@ -42,8 +42,8 @@ return {
           "phpstan", -- PHP
           "jsonlint", -- JSON
           "yamllint", -- Yaml
-          "rubyfmt", -- Ruby
-          -- "rubocop", -- Ruby
+          -- "rubyfmt", -- Ruby
+          "rubocop", -- Ruby
         },
       })
     end,
@@ -54,12 +54,13 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls", -- Lua
-          "solargraph", -- Ruby
+          -- "solargraph", -- Ruby
+          "ruby_lsp", --Ruby
           "intelephense", -- Php
           "jsonls", -- JSON
           "yamlls", -- YAML
           "sqlls", -- SQL
-          -- "pyright", -- Python
+          "pyright", -- Python
           "terraformls", -- Terraform
           "ruff", -- Python
           "zls", -- Zig

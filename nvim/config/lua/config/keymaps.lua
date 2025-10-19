@@ -16,7 +16,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Edit
 ---------------------------
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "K", "k$J")
+-- vim.keymap.set("n", "K", "k$J")
 vim.keymap.set({"n", "v" }, "y", '"+y')
 vim.keymap.set({"n", "v" }, "Y", '"+y$')
 vim.keymap.set({"v" }, "<C-t>", ">")

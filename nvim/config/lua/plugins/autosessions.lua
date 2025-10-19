@@ -27,6 +27,6 @@ return {
       end)
     end, { desc = "Add Session" })
 
-    vim.keymap.set("n", "<Leader>fs", ":SessionSearch<CR>", { desc = "Sessions" })
+    vim.keymap.set("n", "<Leader>fs", ":AutoSession search<CR>", { desc = "Sessions" })
   end,
 }
