@@ -24,8 +24,8 @@ return {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
     config = function()
-      vim.keymap.set("t", "<d-j>", "<S-j>", {})
-      vim.keymap.set("t", "<d-k>", "<S-k>", {})
+      vim.keymap.set("t", "<M-S-j>", "<S-j>", {})
+      vim.keymap.set("t", "<M-S-k>", "<S-k>", {})
     end,
   },
   {

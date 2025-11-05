@@ -8,6 +8,7 @@ return {
       python = { "ruff" },
       ruby = { "rubocop" },
       lua = { "luacheck" },
+      terraform = { "tflint" },
     }
 
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {

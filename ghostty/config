@@ -16,3 +16,14 @@ macos-option-as-alt = true
 # keybind = cmd+ctrl+left=goto_split:left
 # keybind = cmd+ctrl+right=goto_split:right
 # keybind = cmd+ctrl+down=goto_split:bottom
+
+keybind = performable:ctrl+k=goto_split:top
+keybind = performable:ctrl+j=goto_split:bottom
+keybind = performable:ctrl+h=goto_split:left
+keybind = performable:ctrl+l=goto_split:right
+
+
+# Shaders
+custom-shader = shaders/cursor_blaze.glsl
+# custom-shader = shaders/retro-terminal.glsl
+# custom-shader = shaders/in-game-crt.glsl

@@ -18,3 +18,5 @@ dst_dir="${HOME}/Library/Application Support/com.mitchellh.ghostty"
 echo $dst_dir
 mkdir -p "${dst_dir}"
 ln -s "${src_dir}/config" "${dst_dir}/config"
+ln -s "${src_dir}/shaders" "${dst_dir}/shaders"
+

@@ -21,7 +21,9 @@ return {
         lua = { "stylua" },
         python = { "ruff_format" },
         ruby = { "rubocop" },
-        terraform = { "hclfmt" },
+
+        terraform = { "terraform_fmt" },
+        -- terraform = { "hclfmt" },
       },
       -- format_on_save = {
       --   lsp_fallback = true,

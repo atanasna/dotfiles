@@ -6,6 +6,7 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.switchbuf = "useopen,usetab"
 
 vim.opt.scrolloff = 12
 vim.opt.cursorline = true

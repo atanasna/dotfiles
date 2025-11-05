@@ -27,8 +27,9 @@ return {
         ensure_installed = {
           -- Formatters
           "prettier", -- prettier formatter
-          "stylua", -- lua formatter
-          "hclfmt", -- for terraform
+          -- "stylua", -- lua formatter
+          -- "hclfmt", -- for terraform
+          "luacheck", -- for lua
           -- "isort", -- python formatter
           -- "black", -- python formatter
           -- "ruff", -- python linter/formatter

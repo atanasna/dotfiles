@@ -1,12 +1,13 @@
 vim.lsp.enable({
-  "pyright",
-  "ruby_lsp",
-  "lua_ls",
+  "python",
+  "ruby",
+  "lua",
+  "terraform",
 })
-vim.keymap.set("n", "<leader>ci", vim.lsp.buf.hover, { desc = "Show Documentation" })
-vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, { desc = "Show Definition" })
+vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, { desc = "Show Documentation" })
+vim.keymap.set("n", "<leader>ci", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { desc = "Show Error/Diagnostic" })
-vim.keymap.set("n", "<leader>cI", ":LangInfo<cr>", { desc = "Show LSP/Linter/Formatter Info" })
+vim.keymap.set("n", "<leader>cl", ":LangInfo<cr>", { desc = "Show LSP/Linter/Formatter Info" })
 
 -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", {})
 -- vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", {})
@@ -85,9 +86,9 @@ vim.api.nvim_create_user_command("LangInfo", function()
   end
 
   add_line("")
-  add_line("Logs:")
+  add_line("Debug:")
   add_line("  LSP:    :lua vim.cmd.edit(vim.lsp.get_log_path())")
-  add_line("  Conform: tail -f ~/.local/state/nvim/conform.log")
+  add_line("  Conform: :ConformInfo")
   add_line("  Lint:   (uses vim.diagnostic)")
 
   vim.bo[buf].modifiable = false

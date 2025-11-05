@@ -30,6 +30,14 @@ return {
     input = { enabled = true },
     picker = {
       prompt = "⏵ ",
+      actions = {
+        list_10_down = function(picker)
+          picker.list:move(10)
+        end,
+        list_10_up = function(picker)
+          picker.list:move(-10)
+        end,
+      },
       enabled = true,
       layouts = {
         default_A = {
@@ -68,7 +76,7 @@ return {
           layout = {
             height = 0.8,
             width = 0.4,
-          },
+          }
         },
       },
       sources = {
@@ -78,8 +86,8 @@ return {
               keys = {
                 ["<leader>fg"] = "picker_grep",
                 ["<leader>ff"] = "picker_files",
-                ["<d-j>"] = "list_scroll_down",
-                ["<d-k>"] = "list_scroll_up",
+                ["<M-j>"] = "list_10_down",
+                ["<M-k>"] = "list_10_up"
               },
             },
           },
@@ -89,8 +97,10 @@ return {
       win = {
         input = {
           keys = {
-            ["<D-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
-            ["<D-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<M-j>"] = {"list_10_down", mode = {"i", "n"}},
+            ["<M-k>"] = {"list_10_up", mode = {"i", "n"}},
+            ["<M-S-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<M-S-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
             -- ["<c-n>"] = {
             --   -- THIS IS A TEST TO TRIGGER A NOTIFICATION ON KEYCOMBO
             --   function()
@@ -104,6 +114,12 @@ return {
             -- },
           },
         },
+        -- list = {
+        --   keys = {
+        --     ["<M-j>"] = function(self) vim.api.nvim_feedkeys("10j", "n", false) end,
+        --     ["<M-k>"] = function(self) vim.api.nvim_feedkeys("10k", "n", false) end,
+        --   },
+        -- },
       },
     },
     notifier = { enabled = true },
