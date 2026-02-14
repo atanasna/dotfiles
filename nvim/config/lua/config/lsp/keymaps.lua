@@ -1,9 +1,3 @@
-vim.lsp.enable({
-  "python",
-  "ruby",
-  "lua",
-  "terraform",
-})
 vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, { desc = "Show Documentation" })
 vim.keymap.set("n", "<leader>ci", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { desc = "Show Error/Diagnostic" })

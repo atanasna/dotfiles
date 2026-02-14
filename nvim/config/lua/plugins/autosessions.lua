@@ -23,7 +23,8 @@ return {
       Snacks.input({
         prompt = 'Session Name',
       }, function(value)
-        vim.cmd("SessionSave " .. value)
+        -- vim.cmd("SessionSave " .. value)
+        vim.cmd("AutoSession save " .. value)
       end)
     end, { desc = "Add Session" })
 

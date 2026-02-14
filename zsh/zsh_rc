@@ -98,21 +98,25 @@ ZSH_THEME="atanasna"
 # Customizations
 ###########################################
 export TERM=xterm-256color
+export EDITOR=nvim
 
 # Oh-My-Zsh
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting z)
 source $ZSH/oh-my-zsh.sh
+
 # Enable fzf integration
 source <(fzf --zsh)
+
+# Mise-en-place
+eval "$(mise activate zsh)"
 
 # Shell OPTIONS 
 unsetopt inc_append_history
 unsetopt share_history
 
 # Shell ALIASES
-source ~/.config/zsh/aliases
+source ~/.config/zsh/aliases 2> /dev/null
 
-fastfetch
 # Shell KEYBINDINGS
 
 ## ---
@@ -141,6 +145,8 @@ fastfetch
 ############################################
 ## PATH Exports
 ############################################
+export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 #export ANDROID_HOME=$HOME/Library/Android/sdk
 #export PATH=$PATH:/Users/atanasna/bin
 #export PATH=$PATH:$ANDROID_HOME/tools
@@ -158,7 +164,4 @@ fastfetch
 ############################################
 ## SECRETS
 ############################################
-#export ONESIGNAL_API_KEY=YjhkN2ExYzctNDY4My00ZmJiLWJlMGUtNjE1OTNlZDA2N2Uw
-#export BITRISE_API_KEY=mUkadmH8QGqc0lxeiK5sdi6SLdpfAPc76ov5vf4ss2Ybt1eW-mzO8HtugPg9Oi_d6C3vtYUqbs-uYxtP2hUOIg
-#export FIREBASE_API_USER=gitlab-apps@ampeco-charge.iam.gserviceaccount.com
-#export FIREBASE_API_KEY='-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLeFYJMppFV16L9yTOJJlO4q/mrPOnQREL4D+GcZyVp1bHptwB4yha4bk6AUh8dEbH3lHG2JO4snL6r85UAhW3/lvU7MxN24FGM9ZIzMxlo17dXU1Lcve3a98Hv9j86Vs7L7QFMBZdE1vjdAw8HWCi4PgTRoWqhLkDuMmIAi/+n9fusnGtQ4eT1UxcS1UAb/AIbcgkLSp1FN/YBGVi/zthrclcULqmT/nAUC5l30UFuvJFcT4WVuZDZv9sYn2y0BcltfQvpj5tb03xijsY5XrrSQIcrs3StZeUv1vJZESEcw8dGrRyFUS6IAMQYnzpSpNIVi5EaB/xCihmjF7/Rkb7AgMBAAECggEABh1YLI+WPkY5Y6hqNT25U7sRQTPqYJjee8Zh8lbgt0ifnYFgtDfQ4yZMbDdUp9TQubnvKDQjAFZwiSMWZsTnRS/CL7xsCVzy3hq5sldhPx6xP6LJq15JnnwB6Fg2G6eho74zwUIoMeTeio/WvEm/uTVcjyu74Zt6eeeoOsuiCJtUZ5SOm3rPfkHehQkRqinCzKZYng5S5lVgzwYdylbKARMqmv23RIW2oe5LW61MsUJojkJUJG4hDd1xN8VZgcINFz0FYP1hZkvyyvRHD+65UkGESa9d1Au15Angc0gqqDfhERL3uLITA4swscq+zEA5Gj7AvP/zwb7ffEtD6XYxPQKBgQDqIauXNFtH/xvpnjnKUe5azP6Z53yhnzCZo9P++wO+EI9Ylld3exsrxpU+eMHeBk5xNI50dhdRiZYavsaiD3uxzXyQ3E0n0MSe++Z9wazFGMb46/P2yY/pePgPgHnRBDITmpDx7twK0TQALseLAbWutpr7aPAp1otih6mgTeVhPQKBgQDeeYSm3VREYai2RLf1PKbDQeob7Bu16zzWsRyaFHVeRNA7lxLFL14/sPMd8ZQod/ghDWQynjLHnVmwVSWrArqlhKnfU8TsR5z1bCyb180/N1SJU5wplfpW26mZNrP/HerlrdFXc3UOSRUN/z/AL9lY+PS3y9iR3IqzhX2G5qhclwKBgB8Li+cmyBvJ1feqRVtwdbyQhgn+SeZcZ2NX99pNind/VqKWfM6ZAkdRs6Ru+rXn/CrCn0kOB5WGOuMc/NWsW+h9qNDEhW6MHiY+nJd8QN55pJiJIPZOT8jTg4D6tixi9Ajpa+LIm2DL0KtdiJQEDAU4rWA8z+ucSSstde6Npaa5AoGABr7Ccdi2DFi1p8kPlsTe/X6LHYucD3jxYEUAa/+Ay3nkolnjPM1B20Z/KIJBjrSMdlwUlKBNQ9YWeQ0r1jJ//DK4f8fnaY6GSL6d35+8XlVMH9nEG1Krw2RnkPiinnKGw63wcelTPDqlA8agZTBOM69gpA3vJAT+w5ChjKyDoEMCgYB0ijbu17vfztyoSrOPmDH2DisHiGdAmTXnfp6J3eB406AN3mdh65nHMjDuAATVi/DMG1Hl0ZF49yoOmghmrJNzdfGFnWAkz1WTot9GVL0Y/GC9Dlf+8/tA2Aw1SLlJWmwIvrFLptAD+jVE33rvq4+txQoRSDV6+q/yh0GKqVK7sQ==\n-----END PRIVATE KEY-----'
+source ~/.config/shell/secrets 2> /dev/null

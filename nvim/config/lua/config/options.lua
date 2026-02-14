@@ -14,6 +14,16 @@ vim.opt.cursorcolumn = true
 
 vim.bo.commentstring = "# %s"
 
+-- -- Folding
+-- vim.opt.foldmethod = "expr"
+-- -- vim.opt.foldmethod = "syntax"
+-- -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldenable = false  -- Start with folds open
+-- vim.opt.foldlevel = 99       -- Open all folds by default
+-- vim.opt.foldlevelstart = 99  -- Open all folds when opening a file
+-- -- /Folding
+
 -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 

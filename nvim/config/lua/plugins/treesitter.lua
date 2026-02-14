@@ -69,6 +69,24 @@ return {
       vim.keymap.set("o", "iQ", 'i"', { desc = 'inside quotes(")' })
       vim.keymap.set("o", "ib", "i(", { desc = "inside brackets(())" })
       vim.keymap.set("o", "iB", "i[", { desc = "inside quotes([])" })
+
+      -- Folding configuration
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.opt.foldenable = false
+      -- vim.opt.foldcolumm = "1"
+      vim.opt.foldtext = ""
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+      vim.keymap.set('n', '<Tab>', 'za', { desc = 'Toggle fold' })
+
+      vim.api.nvim_create_autocmd('BufReadPost', {
+        callback = function()
+          if vim.wo.foldmethod == 'expr' then
+            vim.cmd('normal! zx')
+          end
+        end
+      })
     end,
   },
 }

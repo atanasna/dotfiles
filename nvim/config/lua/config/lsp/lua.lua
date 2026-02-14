@@ -1,5 +1,7 @@
-return {
-  cmd = { "lua-language-server" },
+local path = "/Users/atanasna/.local/share/nvim/mason/packages/lua-language-server/"
+
+vim.lsp.config("lua", {
+  cmd = { path .. "lua-language-server" },
   filetypes = { "lua" },
   root_markers = {
     ".luarc.json",
@@ -9,7 +11,6 @@ return {
     "stylua.toml",
     "selene.toml",
     "selene.yml",
-    ".git",
   },
   settings = {
     Lua = {
@@ -27,5 +28,8 @@ return {
         enable = false,
       },
     },
-  },
-}
+  }
+})
+
+vim.lsp.enable("lua")
+

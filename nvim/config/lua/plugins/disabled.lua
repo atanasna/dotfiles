@@ -11,7 +11,7 @@ return {
   --{ "iamcco/markdown-preview.nvim",                enabled = false },
   --{ "echasnovski/mini.icons",                      enabled = false }, --true},
   --{ "echasnovski/mini.pairs",                      enabled = false },
-  --{ "folke/noice.nvim",                            enabled = false },
+  -- { "folke/noice.nvim",                            enabled = false },
   --{ "mfussenegger/nvim-lint",                      enabled = false },
   --{ "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
   --{ "windwp/nvim-ts-autotag",                      enabled = false },

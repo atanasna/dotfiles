@@ -91,32 +91,42 @@ prompt_end() {
 prompt_git() {
   bg='#FCA17D'
   fg='#FFFFFF'
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-  tag=$(git describe --tags --exact-match 2>/dev/null)
-  stashes=$(git stash list 2>/dev/null | wc -l | xargs)
-  if [ "$stashes" -eq 0 ]; then 
-    stashes=""; 
-  else
-    stashes="  $stashes"
-  fi
 
-  if [ -n "$branch" ]; then
-    prompt_segment $bg $fg " $branch$stashes"
-  elif [ -n "$tag" ]; then
-    prompt_segment $bg $fg " $tag$stashes"
-  fi
+  local ref=$(git symbolic-ref --short HEAD 2>/dev/null)
+  [[ -z $ref ]] && return
+
+  prompt_segment $bg $fg " $ref"
 }
+
+# prompt_git() {
+#   bg='#FCA17D'
+#   fg='#FFFFFF'
+#   branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+#   tag=$(git describe --tags --exact-match 2>/dev/null)
+#   stashes=$(git stash list 2>/dev/null | wc -l | xargs)
+#   if [ "$stashes" -eq 0 ]; then 
+#     stashes=""; 
+#   else
+#     stashes="  $stashes"
+#   fi
+#
+#   if [ -n "$branch" ]; then
+#     prompt_segment $bg $fg " $branch$stashes"
+#   elif [ -n "$tag" ]; then
+#     prompt_segment $bg $fg " $tag$stashes"
+#   fi
+# }
 
 # Dir: current working directory
 prompt_dir() {
   bg='#9A348E'
   fg='#FFFFFF'
-  pwd=$(pwd | sed "s|$HOME|󰟒 |1")
-  parts=$(echo $pwd | awk -F'/' '{print NF}')
-  if [ "$parts" -gt 3 ]; then
-    pwd=$(echo $pwd | awk -F "/" '{print $1 "/.../" $(NF-1) "/" $NF}')
+  local path=${PWD/#$HOME/󰟒 }
+  local -a parts=(${(s:/:)path})
+  if (( ${#parts} > 3 )); then
+    path="${parts[1]}/.../${parts[-2]}/${parts[-1]}"
   fi
-  prompt_segment $bg $fg $pwd
+  prompt_segment $bg $fg $path
 }
 
 #AWS Profile:
@@ -186,7 +196,7 @@ build_right_prompt() {
   CURRENT_BG_RIGHT='NONE'
   
   prompt_time
-  prompt_host
+  # prompt_host
   
   # Reset at the end
   echo -n "%{%k%f%}"

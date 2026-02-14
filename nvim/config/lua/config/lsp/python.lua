@@ -1,5 +1,7 @@
-return {
-  cmd = { "pyright-langserver", "--stdio" },
+local path = "/opt/homebrew/bin/"
+
+vim.lsp.config("python", {
+  cmd = { path .. "pyright-langserver", "--stdio" },
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
@@ -17,4 +19,7 @@ return {
       }
     }
   }
-}
+})
+
+vim.lsp.enable("python")
+
