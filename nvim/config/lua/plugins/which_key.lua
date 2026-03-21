@@ -36,7 +36,7 @@ return {
       { "<leader>c", group = "Code", icon = "󰅱" },
       -- { "<leader>s", group = "Split", icon = "󰨑" },
       { "<leader>g", group = "Git"},
-      { "<leader>gd", group = "Diff"},
+      { "<leader>d", group = "Diff"},
     })
   end
 }

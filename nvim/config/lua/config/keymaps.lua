@@ -4,10 +4,21 @@
 --------------------------
 -- Navigation
 ---------------------------
+-- Scroll
 vim.keymap.set({"n","v"}, "<M-j>", "<Cmd>normal! 10jzz<CR>", { noremap = true, silent = true })
 vim.keymap.set({"n","v"}, "<M-k>", "<Cmd>normal! 10kzz<CR>", { noremap = true, silent = true })
+
+-- Go top/bottom
+vim.keymap.set({"n","v"}, "gk", "gg", {desc = "Move to file start" })
+vim.keymap.set({"n","v"}, "gj", "G", {desc = "Move to file end" })
+-- Go start/end
+vim.keymap.set({"n","v"}, "gh", "^", {desc = "Move to line start" })
+vim.keymap.set({"n","v"}, "gl", "$", {desc = "Move to line end" })
+-- Move lines
+vim.keymap.set("n", "<D-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
+vim.keymap.set("n", "<D-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+
 vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
 
 -- vim.keymap.set({ "n", "v" }, "y", '"*y')
 -- vim.keymap.set("n", "p", '"*p')

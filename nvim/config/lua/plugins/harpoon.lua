@@ -32,12 +32,12 @@ return {
         win = {
           input = {
             keys = {
-              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
+              ["<C-x>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
             },
           },
           list = {
             keys = {
-              ["<C-d>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
+              ["<C-x>"] = { "harpoon_delete", mode = { "i", "n", "x" } },
             },
           },
         },

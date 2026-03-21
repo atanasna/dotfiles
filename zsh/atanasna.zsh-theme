@@ -92,10 +92,12 @@ prompt_git() {
   bg='#FCA17D'
   fg='#FFFFFF'
 
-  local ref=$(git symbolic-ref --short HEAD 2>/dev/null)
-  [[ -z $ref ]] && return
-
-  prompt_segment $bg $fg " $ref"
+  if [ -d .git ]; then
+    # local ref=$(git symbolic-ref --short HEAD 2>/dev/null)
+    local ref=$(cat .git/HEAD | cut -d'/' -f3-)
+    prompt_segment $bg $fg " $ref"
+  fi
+  # [[ -z $ref ]] && return
 }
 
 # prompt_git() {
@@ -137,18 +139,16 @@ prompt_dir() {
 prompt_aws() {
   bg='#DA627D'
   fg='#FFFFFF'
-  if [ -n "$AWS_DEPLOYMENT" ]; then
-    prompt_segment $bg $fg "󰅡 $AWS_DEPLOYMENT:$AWS_ENV"
-  elif [ -n "$AWS_PROFILE" ]; then
+  if [ -n "$AWS_PROFILE" ]; then
     prompt_segment $bg $fg "󰅡 $AWS_PROFILE"
   fi
 }
 
 build_left_prompt() {
   RETVAL=$?
-  #prompt_status
+  # prompt_status
   #prompt_virtualenv
-  #prompt_context
+  # prompt_context
   prompt_dir
   prompt_aws
   prompt_git
@@ -205,4 +205,4 @@ build_right_prompt() {
 # FULL prompt
 ################################
 PROMPT='$(build_left_prompt) '
-RPROMPT='$(build_right_prompt)'
+# RPROMPT='$(build_right_prompt)'
