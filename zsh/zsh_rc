@@ -1,21 +1,22 @@
-##########################################
+###########################################
 # Includes
-##########################################
+###########################################
 source ~/.config/zsh/aliases 2> /dev/null
 source ~/.config/zsh/custom 2> /dev/null
 source ~/.config/zsh/secrets 2> /dev/null
 
-##########################################
+###########################################
 # Prompt
-##########################################
+###########################################
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="atanasna"
+# ZSH_THEME="atanasna"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
 
-##########################################
+###########################################
 # Tools
-##########################################
+###########################################
 # fzf for fuzzy history
 source <(fzf --zsh)
 

@@ -1,0 +1,47 @@
+# Starship prompt — matching atanasna.zsh-theme
+# Powerline segments: directory (purple) → AWS (pink) → git (orange)
+# Requires a Nerd Font
+
+add_newline = false
+
+format = """
+${custom.dir}\
+[\ue0b0](fg:#9A348E bg:#DA627D)\
+${env_var.AWS_PROFILE}\
+[\ue0b0](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+[\ue0b0](fg:#FCA17D) """
+
+# Uncomment for right-side time display
+# right_format = """$time"""
+
+# ── Directory ──────────────────────────────────────────────
+[custom.dir]
+command = '''case "$PWD" in "$HOME"*) p="󰟒 ${PWD#$HOME}";; *) p="$PWD";; esac; echo "$p" | awk -F/ '{if(NF>3) print $1"/.../"$(NF-1)"/"$NF; else print $0}' '''
+when = "true"
+disabled = false
+format = "[ $output ](fg:#FFFFFF bg:#9A348E)"
+
+# ── AWS Profile ───────────────────────────────────────────
+[env_var.AWS_PROFILE]
+format = "[ 󰅡 $env_value ](fg:#FFFFFF bg:#DA627D)"
+
+# ── Git Branch ─────────────────────────────────────────────
+[git_branch]
+style = "fg:#FFFFFF bg:#FCA17D"
+format = "[ \ue65d $branch ]($style)"
+truncation_length = 8
+truncation_symbol = ""
+
+# ── Time (right prompt, disabled by default) ───────────────
+[time]
+disabled = false
+style = "fg:#1e3a35 bg:#6dd5c3"
+format = "[\ue0b0](fg:#6dd5c3)[ 󰥔 $time ]($style)[\ue0b0](fg:#6dd5c3)"
+time_format = "%H:%M"
+
+# ── Hostname (uncomment and add to right_format) ──────────
+# [hostname]
+# ssh_only = false
+# style = "fg:#192930 bg:#6db8d5"
+# format = "[\ue0b0](fg:#6db8d5)[ 󰒋 $hostname ]($style)[\ue0b0](fg:#6db8d5)"

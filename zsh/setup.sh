@@ -11,6 +11,8 @@ dst_zsh_dir="${HOME}/.config/zsh"
 rm -rf $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 rm -rf $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
+rm -rf $HOME/.config/starship.toml
+
 rm -rf "${dst_theme_dir}"
 rm -rf "${dst_zsh_dir}"
 
@@ -20,7 +22,7 @@ rm -rf "${dst_zsh_dir}"
 # Tools
 if ! command -v brew >/dev/null 2>&1
 then
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf bat eza fd rg zoxide
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf bat eza fd ripgrep zoxide
 fi
 
 # Main 
@@ -41,6 +43,7 @@ touch "${dir_zsh_dir}/secrets"
 touch "${dir_zsh_dir}/custom"
 
 ln -s "${src_dir}/atanasna.zsh-theme" "${dst_theme_dir}/atanasna.zsh-theme"
+ln -s "${src_dir}/starship.toml" "$HOME/.config/starship.toml"
 mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
 mv "$HOME/.zprofile" "$HOME/.zprofile.backup"
 ln -s "${src_dir}/zsh_aliases" "${dst_zsh_dir}/aliases"
