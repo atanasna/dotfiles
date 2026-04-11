@@ -94,7 +94,7 @@ prompt_git() {
 
   if [ -d .git ]; then
     # local ref=$(git symbolic-ref --short HEAD 2>/dev/null)
-    local ref=$(cat .git/HEAD | cut -d'/' -f3-)
+    local ref=$(cat .git/HEAD | cut -d'/' -f3- | cut -c1-8)
     prompt_segment $bg $fg " $ref"
   fi
   # [[ -z $ref ]] && return

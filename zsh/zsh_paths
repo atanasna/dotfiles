@@ -1,0 +1,25 @@
+############################################
+# Basic
+############################################
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+############################################
+# Exports
+############################################
+export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+#export ANDROID_HOME=$HOME/Library/Android/sdk
+#export PATH=$PATH:/Users/atanasna/bin
+#export PATH=$PATH:$ANDROID_HOME/tools
+#export PATH=$PATH:$ANDROID_HOME/tools/bin
+#export PATH=$PATH:$ANDROID_HOME/platform-tools
+#export PATH=$PATH:$ANDROID_HOME/emulator
+#export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+#export PATH=$JAVA_HOME/bin:$PATH
+#export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+#export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+#export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+#export PATH=/Applications/Transporter.app/Contents/itms/bin:$PATH
+#export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+#
