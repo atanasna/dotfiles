@@ -27,7 +27,7 @@ return {
     vim.keymap.set('n', '<leader>gs', ":DiffviewOpen<CR>", { desc = "Status" })
 
     vim.keymap.set('n', '<leader>db', ":windo diffthis<CR>", { desc = "Buffers" })
-    vim.keymap.set('n', '<leader>dq', ":diffoff<CR>", { desc = "Buffers" })
+    vim.keymap.set('n', '<leader>dq', ":diffoff<CR>", { desc = "Quit Diff" })
 
   end
 }
