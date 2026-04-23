@@ -1,3 +1,6 @@
+# Use for aliases and a custom prompt, tweaking the appearance and behavior of the terminal
+# The file is loaded on (interactive) sessions
+
 ###########################################
 # Includes
 ###########################################
@@ -26,3 +29,5 @@ eval "$(zoxide init zsh)"
 # Mise-en-place
 eval "$(mise activate zsh --shims)"
 
+
+export JAVA_HOME=/Users/atanasna/.local/share/mise/installs/java/26.0.0/bin/java

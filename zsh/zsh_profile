@@ -1,3 +1,6 @@
+# Use to set the PATH and EDITOR environment variables.
+# The file is loaded on (login) sessions
+
 #######################
 # Includes
 #######################
@@ -14,5 +17,9 @@ export EDITOR=nvim
 HISTSIZE=10000
 HISTFILESIZE=10000
 setopt HIST_IGNORE_ALL_DUPS
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+unsetopt INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
+
+# Disable auto naming
+DISABLE_AUTO_TITLE="true"

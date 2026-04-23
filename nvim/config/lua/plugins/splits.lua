@@ -2,6 +2,7 @@ return {
   'mrjones2014/smart-splits.nvim',
   opts = {
     ignored_filetypes = { 'qf' },
+    at_edge = 'stop',
   },
   init = function()
     -- recommended mappings
@@ -19,10 +20,10 @@ return {
     vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
     -- vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
 
-    vim.keymap.set("n", "<leader>sh", ":wincmd v<CR>", { desc = "Split Left" })
-    vim.keymap.set("n", "<leader>sl", ":wincmd v | :wincmd l<CR>", { desc = "Split Right" })
-    vim.keymap.set("n", "<leader>sj", ":wincmd s | :wincmd j<CR>", { desc = "Split Down" })
-    vim.keymap.set("n", "<leader>sk", ":wincmd s<CR>", { desc = "Split Up" })
+    vim.keymap.set("n", "<leader>ph", ":wincmd v<CR>", { desc = "Split Left" })
+    vim.keymap.set("n", "<leader>pl", ":wincmd v | :wincmd l<CR>", { desc = "Split Right" })
+    vim.keymap.set("n", "<leader>pj", ":wincmd s | :wincmd j<CR>", { desc = "Split Down" })
+    vim.keymap.set("n", "<leader>pk", ":wincmd s<CR>", { desc = "Split Up" })
     -- vim.keymap.set("n", "<leader>sk", ":horizontal split<CR>", { desc = "Split Up" })
 
     -- vim.keymap.set("n", "<D-s>h", ":vertical split<CR>", { desc = "Split Left" })

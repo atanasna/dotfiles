@@ -8,3 +8,12 @@ alias find="fd"
 alias vim="nvim"
 alias k="kubectl"
 alias oc="opencode"
+
+tmux() {
+    local session="default"
+    if command tmux has-session -t="$session" 2>/dev/null; then
+        command tmux attach -t "$session"
+    else
+        command tmux new-session -s "$session"
+    fi
+}
