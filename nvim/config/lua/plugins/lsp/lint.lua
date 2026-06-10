@@ -7,15 +7,14 @@ return {
     lint.linters_by_ft = {
       python = { "ruff" },
       ruby = { "rubocop" },
-      lua = { "luacheck" },
       terraform = { "tflint" },
     }
 
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+      group = vim.api.nvim_create_augroup("lint", { clear = true }),
       callback = function()
-        require("lint").try_lint()
+        pcall(lint.try_lint)
       end,
     })
   end,
 }
-

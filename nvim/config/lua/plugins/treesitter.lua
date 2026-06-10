@@ -4,89 +4,75 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
-      local ts = require("nvim-treesitter.configs")
+      require("nvim-treesitter").setup()
 
-      local opts = {
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-        --   textobjects = {
-        --     select = {
-        --       keymaps = {
-        --         -- You can use the capture groups defined in textobjects.scm
-        --         ["af"] = "@function.outer",
-        --         ["if"] = "@function.inner",
-        --         ["ac"] = "@class.outer",
-        --         -- You can optionally set descriptions to the mappings (used in the desc parameter of
-        --         -- nvim_buf_set_keymap) which plugins like which-key display
-        --         ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-        --         -- You can also use captures from other query groups like `locals.scm`
-        --         ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-        --       },
-        --     }
-        --   }
-      }
+      vim.opt.foldenable = false
+      vim.opt.foldtext = ""
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+      vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle fold" })
 
-      ts.setup(opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
+        callback = function(event)
+          pcall(vim.treesitter.start, event.buf)
+
+          vim.wo.foldmethod = "expr"
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
-      local tso = require("nvim-treesitter.configs")
-
-      local opts = {
-        textobjects = {
-          select = {
-            enable = true,
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              -- functionons
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              -- classes
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              -- attributes
-              ["aa"] = "@attribute.outer",
-              ["ia"] = "@attribute.inner",
-              -- conditions
-              ["ai"] = "@conditional.outer",
-              ["ii"] = "@conditional.inner",
-              -- You can also use captures from other query groups like `locals.scm`
-              ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-            },
-          },
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          lookahead = true,
         },
-      }
+      })
 
-      tso.setup(opts)
+      local select = require("nvim-treesitter-textobjects.select").select_textobject
+
+      vim.keymap.set({ "x", "o" }, "af", function()
+        select("@function.outer", "textobjects")
+      end, { desc = "around function" })
+      vim.keymap.set({ "x", "o" }, "if", function()
+        select("@function.inner", "textobjects")
+      end, { desc = "inside function" })
+      vim.keymap.set({ "x", "o" }, "ac", function()
+        select("@class.outer", "textobjects")
+      end, { desc = "around class" })
+      vim.keymap.set({ "x", "o" }, "ic", function()
+        select("@class.inner", "textobjects")
+      end, { desc = "inside class" })
+      vim.keymap.set({ "x", "o" }, "aa", function()
+        select("@attribute.outer", "textobjects")
+      end, { desc = "around attribute" })
+      vim.keymap.set({ "x", "o" }, "ia", function()
+        select("@attribute.inner", "textobjects")
+      end, { desc = "inside attribute" })
+      vim.keymap.set({ "x", "o" }, "ai", function()
+        select("@conditional.outer", "textobjects")
+      end, { desc = "around conditional" })
+      vim.keymap.set({ "x", "o" }, "ii", function()
+        select("@conditional.inner", "textobjects")
+      end, { desc = "inside conditional" })
+      vim.keymap.set({ "x", "o" }, "as", function()
+        select("@local.scope", "locals")
+      end, { desc = "around scope" })
 
       vim.keymap.set("o", "iq", "i'", { desc = "inside quotes(')" })
       vim.keymap.set("o", "iQ", 'i"', { desc = 'inside quotes(")' })
       vim.keymap.set("o", "ib", "i(", { desc = "inside brackets(())" })
       vim.keymap.set("o", "iB", "i[", { desc = "inside quotes([])" })
 
-      -- Folding configuration
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-      vim.opt.foldenable = false
-      -- vim.opt.foldcolumm = "1"
-      vim.opt.foldtext = ""
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 99
-      vim.keymap.set('n', '<Tab>', 'za', { desc = 'Toggle fold' })
-
-      vim.api.nvim_create_autocmd('BufReadPost', {
-        callback = function()
-          if vim.wo.foldmethod == 'expr' then
-            vim.cmd('normal! zx')
-          end
-        end
-      })
     end,
   },
 }

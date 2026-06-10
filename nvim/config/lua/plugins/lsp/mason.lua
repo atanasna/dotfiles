@@ -25,20 +25,23 @@ return {
 
       mason_tool_installer.setup({
         ensure_installed = {
+          -- LSPs
+          "elixir-ls",
+          "lua-language-server",
+          "pyright",
+          "ruby-lsp",
+          "terraform-ls",
           -- Formatters
           "prettier", -- prettier formatter
-          -- "stylua", -- lua formatter
+          "stylua", -- lua formatter
           -- "hclfmt", -- for terraform
-          "luacheck", -- for lua
           -- "isort", -- python formatter
           -- "black", -- python formatter
           -- "ruff", -- python linter/formatter
-          "elixir-ls",
           "jq", -- json formatter
           "yamlfmt", -- yaml formatter
           "sqlfmt", -- sql formatter
           -- Linters
-          "pyright",
           -- "pylint", -- Python
           "eslint_d", -- JS
           "tflint", -- Terraform
@@ -56,25 +59,21 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          -- "lua_ls", -- Lua
+          "lua_ls", -- Lua
           -- "solargraph", -- Ruby
-          -- "ruby_lsp", --Ruby
+          "ruby_lsp", -- Ruby
           "intelephense", -- Php
           "jsonls", -- JSON
           "yamlls", -- YAML
           "sqlls", -- SQL
-          -- "pyright", -- Python
-          -- "terraformls", -- Terraform
-          -- "elixirls",
+          "pyright", -- Python
+          "terraformls", -- Terraform
+          "elixirls",
           "ruff", -- Python
           "zls", -- Zig
           "bashls", -- Bash
         },
-        automatic_enable = {
-          exclude = {
-            "elixirls", -- Using custom "elixir" config instead
-          },
-        },
+        automatic_enable = false,
       })
     end,
   },

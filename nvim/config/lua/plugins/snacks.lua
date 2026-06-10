@@ -228,37 +228,34 @@ return {
         local qf = require("utils.quickfix")
 
         local function get_unique(list)
-            local seen = {}
-            local result = {}
+          local seen = {}
+          local result = {}
 
-            for _, value in ipairs(list) do
-                if not seen[value] then
-                    seen[value] = true
-                    table.insert(result, value)
-                end
+          for _, value in ipairs(list) do
+            if not seen[value] then
+              seen[value] = true
+              table.insert(result, value)
             end
+          end
 
-            return result
+          return result
         end
 
         local function get_relative_paths(paths)
-          local cwd = vim.fn.getcwd()
           local rpaths = {}
 
           for _, path in ipairs(paths) do
-            local rel = path:gsub("^" .. cwd .. "/", "")
-            table.insert(rpaths, rel)
+            table.insert(rpaths, vim.fn.fnamemodify(path, ":."))
           end
 
           return rpaths
         end
 
-        -- local original_notify = vim.notify
-        -- vim.notify = function() end  -- override with no-op
-
         local files = get_unique(qf.get_files())
-
-        vim.notify = original_notify -- restore original function
+        if #files == 0 then
+          vim.notify("Quickfix list has no files", vim.log.levels.INFO)
+          return
+        end
 
         local rfiles = get_relative_paths(files)
         -- for file in qf.get_files() do

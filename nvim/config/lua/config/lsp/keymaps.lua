@@ -1,6 +1,18 @@
-vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, { desc = "Show Documentation" })
-vim.keymap.set("n", "<leader>ci", vim.lsp.buf.definition, { desc = "Go to Definition" })
-vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { desc = "Show Error/Diagnostic" })
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local opts = { buffer = event.buf }
+
+    vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show Documentation" }))
+    vim.keymap.set("n", "<leader>ci", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
+    vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Show Error/Diagnostic" }))
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Actions" }))
+    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "References" }))
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
+  end,
+})
+
 vim.keymap.set("n", "<leader>cl", ":LangInfo<cr>", { desc = "Show LSP/Linter/Formatter Info" })
 
 -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", {})

@@ -1,6 +1,7 @@
 ###########################################
 # Aliases
 ###########################################
+# Generic
 alias ll="eza -alah"
 alias cat="bat --style=plain"
 alias grep="rg"
@@ -17,3 +18,6 @@ tmux() {
         command tmux new-session -s "$session"
     fi
 }
+
+# Ampeco
+alias hopper="ampeco-devops-hopper"

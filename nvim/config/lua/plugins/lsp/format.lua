@@ -38,7 +38,7 @@ return {
 
     vim.keymap.set({ "n", "v" }, "<leader>cf", function()
       conform.format({
-        lsp_fallback = false,
+        lsp_format = "never",
         async = false,
         timeout_ms = 1000,
       })
