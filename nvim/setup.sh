@@ -1,19 +1,23 @@
 #---------------------
 # Install
 #---------------------
-# Basic
-HOMEBREW_NO_AUTO_UPDATE=1 brew install wget fd fzf ripgrep
+if command -v brew &> /dev/null; then
+  # Basic
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install wget fd fzf ripgrep lazygit
 
-# LSPs
-HOMEBREW_NO_AUTO_UPDATE=1 brew install \
-prettier yamllint jsonlint `# yaml & json` \
-tflint `# terraform` \
-solargraph `# ruby` \
-black pylint `# python`
-npm install -g intelephense
+  # LSPs
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install \
+  prettier \
+  yamllint \
+  jsonlint \
+  terraform-linters/tap/tflint \
+  solargraph \
+  black pylint
+  npm install -g intelephense
 
-# Main
-HOMEBREW_NO_AUTO_UPDATE=1 brew nvim 
+  # Main
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install neovim 
+fi
 #---------------------
 # Link
 #---------------------

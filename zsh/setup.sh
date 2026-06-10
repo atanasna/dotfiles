@@ -20,9 +20,8 @@ rm -rf "${dst_zsh_dir}"
 # Install
 #---------------------
 # Tools
-if ! command -v brew >/dev/null 2>&1
-then
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf bat eza fd ripgrep zoxide
+if command -v brew &> /dev/null; then
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf bat eza fd ripgrep zoxide starship mise go-task/tap/go-task
 fi
 
 # Main 
@@ -39,8 +38,8 @@ echo "Linking ..."
 
 mkdir -p "${dst_theme_dir}"
 mkdir -p "${dst_zsh_dir}"
-touch "${dir_zsh_dir}/secrets"
-touch "${dir_zsh_dir}/custom"
+touch "${dst_zsh_dir}/secrets"
+touch "${dst_zsh_dir}/custom"
 
 ln -s "${src_dir}/atanasna.zsh-theme" "${dst_theme_dir}/atanasna.zsh-theme"
 ln -s "${src_dir}/starship.toml" "$HOME/.config/starship.toml"

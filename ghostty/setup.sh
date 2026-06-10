@@ -1,11 +1,11 @@
 #---------------------
-# Install Dependencies
+# Install
 #---------------------
-# Fonts
-brew install --cask font-terminess-ttf-nerd-font
+if command -v brew &> /dev/null; then
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask font-terminess-ttf-nerd-font
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask ghostty
+fi
 
-# Main 
-brew install --cask ghostty
 #---------------------
 # Link
 #---------------------
