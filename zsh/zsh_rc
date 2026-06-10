@@ -1,11 +1,19 @@
 ###########################################
+# Completion
+###########################################
+autoload -Uz compinit
+compinit -C -d "$HOME/.zcompdump"
+
+###########################################
 # Prompt
 ###########################################
-export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="atanasna"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
+
+###########################################
+# Plugins
+###########################################
+source "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" 2> /dev/null
+source "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 2> /dev/null
 
 ###########################################
 # Includes
@@ -18,7 +26,9 @@ source ~/.config/zsh/secrets 2> /dev/null
 # Tools
 ###########################################
 # fzf for fuzzy history
-source <(fzf --zsh)
+if [[ -t 0 && -t 1 ]]; then
+  source <(fzf --zsh)
+fi
 
 # Zoxide for quick change dir
 eval "$(zoxide init zsh)"
