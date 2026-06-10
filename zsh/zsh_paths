@@ -28,4 +28,4 @@ export PATH="$HOME/.opencode/bin:$PATH"
 #export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 #export PATH=/Applications/Transporter.app/Contents/itms/bin:$PATH
 #export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-#
+

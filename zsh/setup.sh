@@ -21,7 +21,7 @@ rm -rf "${dst_zsh_dir}"
 #---------------------
 # Tools
 if command -v brew &> /dev/null; then
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf bat eza fd ripgrep zoxide starship mise go-task/tap/go-task
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install fzf eza fd ripgrep zoxide starship mise go-task/tap/go-task
 fi
 
 # Main 

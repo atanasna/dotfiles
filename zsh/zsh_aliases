@@ -3,7 +3,6 @@
 ###########################################
 # Generic
 alias ll="eza -alah"
-alias cat="bat --style=plain"
 alias grep="rg"
 alias find="fd"
 alias vim="nvim"

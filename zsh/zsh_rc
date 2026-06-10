@@ -5,6 +5,17 @@ autoload -Uz compinit
 compinit -C -d "$HOME/.zcompdump"
 
 ###########################################
+# Keybindings
+###########################################
+# Keep shell editing in emacs mode even though EDITOR=nvim, so Option+Arrow
+# moves by words instead of treating Option as Escape and entering vi mode.
+bindkey -e
+bindkey '^[b' backward-word
+bindkey '^[f' forward-word
+bindkey '^[[1;3D' backward-word
+bindkey '^[[1;3C' forward-word
+
+###########################################
 # Prompt
 ###########################################
 eval "$(starship init zsh)"
