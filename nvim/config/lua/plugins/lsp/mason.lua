@@ -32,6 +32,7 @@ return {
           "ruby-lsp",
           "terraform-ls",
           -- Formatters
+          "tree-sitter-cli", -- Treesitter parsers
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
           -- "hclfmt", -- for terraform

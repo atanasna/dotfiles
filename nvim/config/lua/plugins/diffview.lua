@@ -4,6 +4,12 @@ return {
     local dv = require("diffview")
 
     local opts = {
+      hooks = {
+        diff_buf_win_enter = function(_, winid)
+          vim.wo[winid].foldenable = false
+          vim.wo[winid].foldlevel = 99
+        end,
+      },
       keymaps = {
         view = {
           { "n", "<esc>", "<Cmd>DiffviewClose<CR>", { desc = "Close DiffView" } },

@@ -7,7 +7,22 @@ return {
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter").setup()
+      local treesitter = require("nvim-treesitter")
+
+      treesitter.setup()
+
+      local parsers = treesitter.get_installed("parsers")
+      local missing_parsers = vim.tbl_filter(function(parser)
+        return not vim.tbl_contains(parsers, parser)
+      end, { "eex", "elixir", "heex", "yaml" })
+
+      if #missing_parsers > 0 then
+        treesitter.install(missing_parsers):wait(300000)
+      end
+
+      vim.treesitter.language.register("bash", "sh")
+      vim.treesitter.language.register("eex", "eelixir")
+      vim.treesitter.language.register("heex", "surface")
 
       vim.opt.foldenable = false
       vim.opt.foldtext = ""
