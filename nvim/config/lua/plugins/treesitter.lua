@@ -14,7 +14,7 @@ return {
       local parsers = treesitter.get_installed("parsers")
       local missing_parsers = vim.tbl_filter(function(parser)
         return not vim.tbl_contains(parsers, parser)
-      end, { "eex", "elixir", "heex", "yaml" })
+      end, { "eex", "elixir", "heex", "markdown", "markdown_inline", "yaml" })
 
       if #missing_parsers > 0 then
         treesitter.install(missing_parsers):wait(300000)
