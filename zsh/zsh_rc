@@ -10,6 +10,11 @@ compinit -C -d "$HOME/.zcompdump"
 # Keep shell editing in emacs mode even though EDITOR=nvim, so Option+Arrow
 # moves by words instead of treating Option as Escape and entering vi mode.
 bindkey -e
+# Treat path and hyphen separators as word boundaries for Option+Arrow.
+WORDCHARS=${WORDCHARS//[\/-]}
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 bindkey '^[b' backward-word
 bindkey '^[f' forward-word
 bindkey '^[[1;3D' backward-word
