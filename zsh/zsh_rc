@@ -1,4 +1,14 @@
 ###########################################
+# History
+###########################################
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt APPEND_HISTORY
+unsetopt INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
+
+###########################################
 # Completion
 ###########################################
 autoload -Uz compinit
@@ -53,3 +63,7 @@ eval "$(zoxide init zsh)"
 eval "$(mise activate zsh --shims)"
 
 export JAVA_HOME=/Users/atanasna/.local/share/mise/installs/java/26.0.0/bin/java
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

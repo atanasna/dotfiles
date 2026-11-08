@@ -4,6 +4,12 @@ return {
     local dv = require("diffview")
 
     local opts = {
+      file_history_panel = {
+        win_config = {
+          position = "left",
+          width = 35,
+        },
+      },
       hooks = {
         diff_buf_win_enter = function(_, winid)
           vim.wo[winid].foldenable = false

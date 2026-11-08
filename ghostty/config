@@ -7,6 +7,7 @@ window-theme = ghostty
 font-family = "Terminess Nerd Font"
 font-size = 16
 macos-option-as-alt = true
+copy-on-select = clipboard
 
 # Bindings
 # keybind = cmd+k=new_split:up

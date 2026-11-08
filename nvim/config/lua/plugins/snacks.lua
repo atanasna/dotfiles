@@ -80,6 +80,27 @@ return {
         },
       },
       sources = {
+        git_log = {
+          preview = function(ctx)
+            return Snacks.picker.preview.cmd(
+              { "git", "show", "--stat", "--oneline", ctx.item.commit, "--" },
+              ctx,
+              { cwd = ctx.picker:cwd(), ft = "git" }
+            )
+          end,
+          confirm = function(picker, item)
+            picker:close()
+            require("diffview").open({ "-C=" .. picker:cwd(), item.commit .. "^!" })
+          end,
+          win = {
+            preview = {
+              keys = {
+                ["<C-j>"] = { "list_down", mode = { "n", "t" } },
+                ["<C-k>"] = { "list_up", mode = { "n", "t" } },
+              },
+            },
+          },
+        },
         explorer = {
           win = {
             list = {

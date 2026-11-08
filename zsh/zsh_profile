@@ -13,13 +13,5 @@ source ~/.config/zsh/paths 2> /dev/null
 export TERM=xterm-256color
 export EDITOR=nvim
 
-# History
-HISTSIZE=10000
-HISTFILESIZE=10000
-setopt HIST_IGNORE_ALL_DUPS
-setopt APPEND_HISTORY
-unsetopt INC_APPEND_HISTORY
-unsetopt SHARE_HISTORY
-
 # Disable auto naming
 DISABLE_AUTO_TITLE="true"
