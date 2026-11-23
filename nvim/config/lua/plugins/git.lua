@@ -21,7 +21,10 @@ return {
     --   { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
     -- }
     keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gg", function()
+        vim.fn.system({ "pkill", "lazygit" })
+        vim.cmd("LazyGit")
+      end, desc = "LazyGit" },
     },
     config = function()
       vim.keymap.set("t", "<M-S-j>", "<S-j>", {})

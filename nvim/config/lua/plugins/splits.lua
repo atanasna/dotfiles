@@ -2,7 +2,11 @@ return {
   'mrjones2014/smart-splits.nvim',
   opts = {
     ignored_filetypes = { 'qf' },
-    at_edge = 'stop',
+    at_edge = function(ctx)
+      if vim.env.REX_SESSION and vim.env.REX_BLOCK then
+        vim.system({ 'rex', 'focus', ctx.direction })
+      end
+    end,
   },
   init = function()
     -- recommended mappings
